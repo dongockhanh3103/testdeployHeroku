@@ -1,0 +1,80 @@
+<!-- sign up content -->
+<div class="signup-container">
+    <div class="container col-md-6 col-lg-6 col-sm-6 col-md-offset-3 col-lg-offset-3 col-sm-offset-3">
+        <div class="signup-title-container">
+            <div class="sub-title">
+                <h1>Sign up to continue</h1>
+            </div>
+            <div class="title">
+                <h1>GONN</h1>
+            </div>
+        </div>
+        <div class="form-container">
+            <!-- Custom Success/Error Message -->
+            <div class="row show-hide-message">
+                <div [ngClass]="messageClass">
+                    {{ message }}
+                </div>
+            </div>
+     
+
+        <form [formGroup]="formSignUp" (submit)="onRegisterSubmit()">
+            <div [ngClass]="{'has-error': (formSignUp.controls.firstname.errors && formSignUp.controls.firstname.dirty), 'has-success': !formSignUp.controls.firstname.errors}"
+                class="form-group half-form">
+                <input type="text" formControlName="firstname" class="form-control" id="signupLastname" aria-describedby="firstname" placeholder="Tên ">
+                <!-- Validation -->
+                <ul class="help-block list-error">
+                    <li *ngIf="formSignUp.controls.firstname.errors?.required && formSignUp.controls.firstname.dirty">Yêu cầu nhập tên người dùng</li>
+                    <li *ngIf="formSignUp.controls.firstname.errors?.minlength && formSignUp.controls.firstname.dirty || formSignUp.controls.firstname.errors?.maxlength && formSignUp.controls.firstname.dirty ">Tên người dùng ít nhất 3 kí tự nhiều nhất 30 kí tự</li>
+                    <li *ngIf="formSignUp.controls.firstname.errors?.validateFirstname && formSignUp.controls.firstname.dirty">Tên người dùng không được chứa kí tự đặc biệt</li>
+                </ul>
+            </div>
+            <div class="form-group half-form">
+                <input type="text" formControlName="lastname" class="form-control" id="signupLastname" aria-describedby="lastname" placeholder="Họ">
+            </div>
+            <div [ngClass]="{'has-error': (formSignUp.controls.email.errors && formSignUp.controls.email.dirty), 'has-success': !formSignUp.controls.email.errors}"
+                class="form-group">
+                <input type="email" formControlName="email" class="form-control" id="signupEmail" placeholder="Email">
+                <!-- Validation -->
+                <ul class="help-block list-error">
+                    <li *ngIf="formSignUp.controls.email.errors?.required && formSignUp.controls.email.dirty">Yêu cầu nhập e-mail</li>
+                    <li *ngIf="formSignUp.controls.email.errors?.minlength && formSignUp.controls.email.dirty || formSignUp.controls.email.errors?.maxlength && formSignUp.controls.email.dirty ">E-mail phải ít nhất 5 kí tự, nhiều nhất 30 kí tự</li>
+                    <li *ngIf="formSignUp.controls.email.errors?.validateEmail && formSignUp.controls.email.dirty">Nhập e-mail đúng định dạng</li>
+                </ul>
+            </div>
+            <div [ngClass]="{'has-error': (formSignUp.controls.password.errors && formSignUp.controls.password.dirty), 'has-success': !formSignUp.controls.password.errors}"
+                class="form-group">
+                <input type="password" formControlName="password" class="form-control" id="signupPassword" placeholder="Mật khẩu">
+                <!-- Validation -->
+                <ul class="help-block list-error">
+                    <li *ngIf="formSignUp.controls.password.errors?.required && formSignUp.controls.password.dirty">Yê cầu nhập mật khẩu</li>
+                    <li *ngIf="formSignUp.controls.password.errors?.minlength && formSignUp.controls.password.dirty || formSignUp.controls.password.errors?.maxlength && formSignUp.controls.password.dirty ">Mật khẩu phải ít nhất 8 kí tự, nhiều nhất 35 kí tự</li>
+                    <li *ngIf="formSignUp.controls.password.errors?.validatePassword && formSignUp.controls.password.dirty">Mật khẩu phải có ít nhất 1 kí tự đặc biệt, in hoa và số</li>
+                </ul>
+            </div>
+            <div [ngClass]="{'has-error': (formSignUp.controls.retypepassword.errors && formSignUp.controls.retypepassword.dirty) || (formSignUp.errors?.matchingPasswords && formSignUp.controls.retypepassword.dirty), 'has-success': !formSignUp.controls.retypepassword.errors && !formSignUp.errors?.matchingPasswords}">
+                <input type="password" formControlName="retypepassword" class="form-control" id="signupRePassword" placeholder="Nhập lại mật khẩu">
+                <!-- Validation -->
+                <ul class="help-block list-error">
+                    <li *ngIf="formSignUp.controls.retypepassword.errors?.required && formSignUp.controls.retypepassword.dirty">Yêu cầu nhập lại mật khẩu</li>
+                    <li *ngIf="formSignUp.errors?.matchingPasswords && formSignUp.controls.retypepassword.dirty">Nhập lại mật khẩu không khớp</li>
+                </ul>
+            </div>
+            <div class="form-group">
+                <label class="">Date of Birth</label>
+                <input type="date" formControlName="dateofbirth" class="form-control" id="signupRePassword" placeholder="Ngày sinh">
+            </div>
+            <div class="btn-group-signup">
+                <button [disabled]="!formSignUp.valid" type="submit" class="btn btn-primary btn-signup">Đăng nhập</button>
+            </div>
+
+        </form>
+    </div>
+    <div class="signin">
+        <p>Đã có tài khoản?</p>
+        <a href="" routerLink="/signin">Đăng nhập</a>
+    </div>
+    <!--link to sign in -->
+</div>
+
+<!-- sign up content end -->

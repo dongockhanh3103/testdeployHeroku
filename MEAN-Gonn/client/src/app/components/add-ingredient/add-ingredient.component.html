@@ -1,0 +1,80 @@
+<div class="admin-container">
+  <div class="container">
+    <div class="admin-wrapper">
+      <div class="left-section col-md-3 col-lg-3">
+        <div class="admin-header-wrapper">
+          <div class="admin-ava-container">
+            <a href="#" class="admin-ava">
+              <img src="assets/images/a1.jpg" alt="Braden Hamm">
+            </a>
+          </div>
+          <div class="admin-info-container">
+            <a href="#">
+              <span>Admin</span>
+            </a>
+          </div>
+        </div>
+        <div class="sidebar">
+          <div id="main-menu" class="list-group">
+            <a href="#sub-menu" class="list-group-item" data-toggle="collapse" data-parent="#main-menu">Món ăn
+              <span class="caret"></span>
+            </a>
+            <div class="collapse list-group-level1" id="sub-menu">
+              <a href="/admin/add-post" class="list-group-item" data-parent="#sub-menu">Thêm món ăn</a>
+              <a href="/admin/view-post" class="list-group-item" data-parent="#sub-menu">Xem món ăn</a>
+            </div>
+            <a href="#sub-menu2" class="list-group-item" data-toggle="collapse" data-parent="#main-menu">Nguyên liệu
+              <span class="caret"></span>
+            </a>
+            <div class="collapse list-group-level1" id="sub-menu2">
+              <a href="/admin/add-ingredient" class="list-group-item" data-parent="#sub-menu">Thêm nguyên liệu</a>
+              <a href="/admin/view-ingredient" class="list-group-item" data-parent="#sub-menu">Xem nguyên liệu</a>
+            </div>
+            <a href="#" class="list-group-item">Đổi mật khẩu</a>
+
+          </div>
+
+        </div>
+      </div>
+      <div class="right-section col-md-9 col-lg-9">
+        <form [formGroup]="form" (submit)="onSubmit()">
+          <div class="container-fluid">
+            <div class="container col-md-offset-1 col-sm-offset-1 col-lg-offset-1 col-md-10 col-sm-10 col-lg-10">
+              <div class="title-container form-group">
+                <label for="title">Tên</label>
+                <input name="name" id="" placeholder="Nhập tên" [(ngModel)]="ingre.name" formControlName="name">
+              </div>
+              <div class="title-container form-group">
+                <label for="title">Giá</label>
+                <input name="price" id="" placeholder="Nhập giá" [(ngModel)]="ingre.price" formControlName="price">
+              </div>
+              <div class="title-container form-group">
+                <label for="title">Đơn vị</label>
+                <input name="unit" id="" placeholder="Nhập đơn vị" [(ngModel)]="ingre.unit" formControlName="unit">
+              </div>
+              <div class="title-container form-group">
+                <label for="backdrop">Ảnh bìa</label>
+                <input name="backdrop" id="" placeholder="Link ảnh bìa" [(ngModel)]="ingre.backdrop" formControlName="backdrop">
+              </div>
+              <div class="image-container form-group">
+                <img height="" width="" id='img-upload' src="{{ingre.backdrop}}" />
+              </div>
+              <div class="title-container">
+                <label for="content">Nội dung</label>
+              </div>
+              <div class="editor-container form-group">
+                <ckeditor [(ngModel)]="ingre.description" formControlName="description">
+                </ckeditor>
+              </div>
+              <div class="add-action-container form-group">
+                <div class="left-btn">
+                  <button type="submit">Lưu</button>
+                </div>
+              </div>
+            </div>
+          </div>
+        </form>
+      </div>
+    </div>
+  </div>
+</div>
